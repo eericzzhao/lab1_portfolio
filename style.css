@@ -95,3 +95,37 @@ h1, h2, h3, h4, h5, h6 {
 .projects h2 {
     margin: 0;
 }
+
+.experience-container {
+    display: grid;
+    grid-template-columns: 10em 1fr auto; 
+    gap: 1.5em;
+    margin-top: 2em;
+}
+
+
+.experience-container article {
+    display: grid;
+    grid-template-columns: subgrid; 
+    grid-column: 1 / -1;           
+    align-items: baseline;
+    padding-bottom: 1em;
+    border-bottom: 1px solid oklch(90% 2% 200);
+}
+
+.experience-container h3 {
+    margin: 0;
+    font-size: 1.1em;
+}
+
+.experience-container .role {
+    margin: 0;
+    font-style: italic;
+    color: #555;
+}
+
+.experience-container time {
+    font-variant-numeric: tabular-nums; 
+    color: var(--color-accent);
+    font-weight: 500;
+}

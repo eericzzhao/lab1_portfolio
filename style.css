@@ -1,4 +1,45 @@
+:root {
+    --color-accent: oklch(65% 50% 0);
+}
+
+html {
+    accent-color: var(--color-accdent)
+}
 body {
     /* Sets the line height to 1.5 times the font size + uses OS's UI font */
     font: 100%/1.5 system-ui;
+    max-width: 100ch;
+    margin-inline: max(1em, (100% - 100ch) / 2);
+
+}
+/* This is to make the invisible list */
+nav ul,
+nav li {
+    display:contents;
+}
+
+nav {
+    display: flex;
+    text-align: center;
+    margin-bottom: 2em;
+    border-bottom: 1px solid oklch(80% 3% 200)
+}
+
+nav a {
+    flex: 1;
+    text-decoration: none;
+    color: inherit;
+    text-align: center;
+    padding: 0.5em;
+    
+}
+
+nav a.current {
+    border-bottom: 0.4e solid oklch(80% 3% 200);
+    padding-bottom:0.1em;
+}
+
+nav a:hover {
+    border-bottom: 0.4em solid var(--color-accent);
+    background-color: oklch(from var(--color-accent) 95% 5% h);
 }

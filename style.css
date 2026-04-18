@@ -3,26 +3,28 @@
 }
 
 html {
-    accent-color: var(--color-accent)
+    color-scheme: light dark;
+    accent-color: var(--color-accent);
 }
+
 body {
-    /* Sets the line height to 1.5 times the font size + uses OS's UI font */
     font: 100%/1.5 system-ui;
     max-width: 100ch;
     margin-inline: max(1em, (100% - 100ch) / 2);
+}
 
-}
-/* This is to make the invisible list */
-nav ul,
-nav li {
-    display:contents;
-}
 
 nav {
     display: flex;
     text-align: center;
     margin-bottom: 2em;
-    border-bottom: 1px solid oklch(80% 3% 200)
+    --border-color: oklch(50% 10% 200 / 40%);
+    border-bottom: 1px solid var(--border-color);
+}
+
+nav ul,
+nav li {
+    display: contents;
 }
 
 nav a {
@@ -31,24 +33,33 @@ nav a {
     color: inherit;
     text-align: center;
     padding: 0.5em;
-    
 }
 
 nav a.current {
-    border-bottom:0.4em solid oklch(80% 3% 200);
-    padding-bottom:0.1em;
+    border-bottom: 0.4em solid var(--border-color);
+    padding-bottom: 0.1em;
 }
 
 nav a:hover {
     border-bottom: 0.4em solid var(--color-accent);
-    background-color: oklch(from var(--color-accent) 95% 5% h);
+    /* Step 4.1: Fixed hover background using system colors */
+    background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
 }
 
-/* Step 3: Contact */
+
+.color-scheme {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 80%;
+}
+
+
 input,
 textarea,
-button {
-    font:inherit;
+button,
+select {
+    font: inherit;
 }
 
 form {
@@ -69,7 +80,7 @@ button {
     cursor: pointer;
 }
 
-/* Step 4: Projects */
+
 h1 {
     font-size: 400%;
 }
@@ -79,15 +90,16 @@ h1, h2, h3, h4, h5, h6 {
     text-wrap: balance;
 }
 
+
 .projects {
-    display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
     gap: 1em;
 }
 
 .projects article {
-    display:grid;
-    grid-template-columns: subgrid;
+    display: grid;
+    grid-template-rows: subgrid; 
     grid-row: span 3;
     gap: 1em;
 }
@@ -96,6 +108,7 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0;
 }
 
+
 .experience-container {
     display: grid;
     grid-template-columns: 10em 1fr auto; 
@@ -103,14 +116,13 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 2em;
 }
 
-
 .experience-container article {
     display: grid;
     grid-template-columns: subgrid; 
     grid-column: 1 / -1;           
     align-items: baseline;
     padding-bottom: 1em;
-    border-bottom: 1px solid oklch(90% 2% 200);
+    border-bottom: 1px solid oklch(50% 10% 200 / 20%);
 }
 
 .experience-container h3 {
@@ -121,7 +133,7 @@ h1, h2, h3, h4, h5, h6 {
 .experience-container .role {
     margin: 0;
     font-style: italic;
-    color: #555;
+    opacity: 0.8; /* Better for dark mode than a fixed gray */
 }
 
 .experience-container time {

@@ -1,0 +1,74 @@
+[
+  {
+    "title": "Machine Learning Image Classifier",
+    "year": 2024,
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Trained a convolutional neural network (CNN) to classify images with 95% accuracy using PyTorch."
+  },
+  {
+    "title": "Data Structures Optimization",
+    "year": 2023,
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Implemented and benchmarked custom Hash Maps and Red-Black Trees in C++."
+  },
+  {
+    "title": "San Diego Housing Market Analysis",
+    "year": 2023,
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Used pandas and matplotlib to clean and visualize 10 years of housing data to identify pricing trends."
+  },
+  {
+    "title": "Personal Portfolio Website",
+    "year": 2024,
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Built a responsive, data-driven portfolio using HTML, modern CSS (Grid/Subgrid), and vanilla JavaScript."
+  },
+  {
+    "title": "Linear Algebra Matrix Solver",
+    "year": 2022,
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Wrote a Python script utilizing NumPy to perform Gaussian elimination and calculate eigenvalues."
+  },
+  {
+    "title": "Algorithmic Trading Bot",
+    "year": 2024,
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Developed a simple moving average crossover strategy using the Alpaca API."
+  },
+  {
+    "title": "Database Management System",
+    "year": 2023,
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Designed a relational database schema in PostgreSQL for a hypothetical e-commerce platform."
+  },
+  {
+    "title": "Graph Theory Route Finder",
+    "year": 2022,
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Implemented Dijkstra's algorithm to find the shortest path between campus buildings."
+  },
+  {
+    "title": "Statistical Hypothesis Testing",
+    "year": 2021,
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Conducted A/B testing analysis on a mock dataset using R to determine statistical significance."
+  },
+  {
+    "title": "Operating Systems Scheduler",
+    "year": 2023,
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Simulated CPU scheduling algorithms (Round Robin, SJF) to analyze turnaround times."
+  },
+  {
+    "title": "Natural Language Processing Tool",
+    "year": 2024,
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Created a basic sentiment analysis script using NLTK to evaluate movie reviews."
+  },
+  {
+    "title": "Calculus Numerical Integration",
+    "year": 2021,
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Coded Simpson's Rule and the Trapezoidal Rule to approximate definite integrals."
+  }
+]

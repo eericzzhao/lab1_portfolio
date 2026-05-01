@@ -9,13 +9,13 @@ function $$(selector, context = document) {
 }
 
 let pages = [
-  { url: 'index.html', title: 'Home' }, 
-  { url: 'projects/index.html', title: 'Projects' },
-  { url: 'contact/index.html', title: 'Contact' },
+  { url: '', title: 'Home' },
+  { url: 'projects/', title: 'Projects' },
+  { url: 'contact/', title: 'Contact' },
   { url: 'https://github.com/eericzzhao', title: 'Github' }
 ];
 
-const BASE_PATH = (location.hostname === "localhost" || location.hostname === "127.0.0.1") ? "/" : "/portfolio/";
+const BASE_PATH = (location.hostname === "localhost" || location.hostname === "127.0.0.1") ? "/" : "/lab1_portfolio/";
 
 let nav = document.createElement('nav');
 document.body.prepend(nav);

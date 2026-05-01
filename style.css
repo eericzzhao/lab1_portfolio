@@ -13,6 +13,15 @@ body {
     margin-inline: max(1em, (100% - 100ch) / 2);
 }
 
+h1 {
+    font-size: 400%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1.1;
+    text-wrap: balance;
+}
+
 
 nav {
     display: flex;
@@ -42,10 +51,8 @@ nav a.current {
 
 nav a:hover {
     border-bottom: 0.4em solid var(--color-accent);
-    /* Step 4.1: Fixed hover background using system colors */
     background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
 }
-
 
 .color-scheme {
     position: absolute;
@@ -81,16 +88,6 @@ button {
 }
 
 
-h1 {
-    font-size: 400%;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    line-height: 1.1;
-    text-wrap: balance;
-}
-
-
 .projects {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
@@ -106,6 +103,21 @@ h1, h2, h3, h4, h5, h6 {
 
 .projects h2 {
     margin: 0;
+}
+
+.project-year {
+    display: block; 
+    margin-top: 0.5em;
+    font-family: Baskerville, "Times New Roman", serif;
+    font-variant-numeric: oldstyle-nums;
+    font-style: italic; 
+    color: #555;
+}
+
+@media (prefers-color-scheme: dark) {
+    .project-year {
+        color: #aaa;
+    }
 }
 
 
@@ -133,7 +145,7 @@ h1, h2, h3, h4, h5, h6 {
 .experience-container .role {
     margin: 0;
     font-style: italic;
-    opacity: 0.8; /* Better for dark mode than a fixed gray */
+    opacity: 0.8;
 }
 
 .experience-container time {
@@ -142,16 +154,15 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 500;
 }
 
+
 #profile-stats dl {
     display: grid;
-    /* Creates 4 equal columns */
     grid-template-columns: repeat(4, 1fr); 
     gap: 1em;
     padding: 1.5em;
     border-radius: 8px;
     text-align: center;
 }
-
 
 #profile-stats dt {
     grid-row: 1;
@@ -161,15 +172,13 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 0.85em;
 }
 
-
 #profile-stats dd {
     grid-row: 2;
-    margin: 0; /* Removes default indent */
+    margin: 0; 
     font-size: 2em;
     font-weight: bold;
     color: var(--color-accent);
 }
-
 
 @media (prefers-color-scheme: dark) {
     #profile-stats dl {
@@ -178,4 +187,106 @@ h1, h2, h3, h4, h5, h6 {
     #profile-stats dt {
         color: #aaa;
     }
+}
+
+
+.container {
+    display: flex;
+    align-items: center; 
+    gap: 2em; 
+    margin-bottom: 2em;
+    flex-wrap: wrap; 
+}
+
+#projects-pie-plot {
+    max-width: 20em;
+    overflow: visible;
+    margin-block: 0; 
+}
+
+.legend {
+    flex: 1; 
+    margin-block: 0; 
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
+    gap: 1em;
+    padding: 1.5em;
+    border: 1px solid oklch(50% 10% 200 / 20%);
+    border-radius: 8px;
+    list-style: none;
+    background-color: oklch(95% 2% 200 / 50%);
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5em; 
+    font-size: 0.9em;
+}
+
+.swatch {
+    width: 1.2em;
+    aspect-ratio: 1 / 1;
+    background-color: var(--color); 
+    display: inline-block;
+    border-radius: 50%; 
+}
+
+.legend-item em {
+    color: #666;
+    font-style: normal;
+    font-size: 0.85em;
+}
+
+@media (prefers-color-scheme: dark) {
+    .legend {
+        background-color: oklch(25% 2% 200 / 50%);
+        border-color: oklch(50% 10% 200 / 40%);
+    }
+    .legend-item em {
+        color: #aaa;
+    }
+}
+
+.searchBar {
+    width: 100%;
+    max-width: 30em;
+    padding: 0.8em 1.2em;
+    font-size: 1.1em;
+    margin-bottom: 2em;
+    border: 1px solid oklch(50% 10% 200 / 40%);
+    border-radius: 8px;
+    background-color: oklch(98% 1% 200);
+    color: inherit;
+    transition: box-shadow 0.2s ease;
+}
+
+.searchBar:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px oklch(from var(--color-accent) 60% 10% h / 30%);
+    border-color: var(--color-accent);
+}
+
+@media (prefers-color-scheme: dark) {
+    .searchBar {
+        background-color: oklch(20% 2% 200);
+        border-color: oklch(50% 10% 200 / 40%);
+    }
+}
+
+#projects-pie-plot path {
+    transition: 300ms;
+    cursor: pointer;
+}
+
+#projects-pie-plot:has(path:hover) path:not(:hover) {
+    opacity: 0.5;
+}
+
+.selected {
+    --color: oklch(60% 45% 0) !important;
+}
+
+.selected:is(path) {
+    fill: var(--color);
 }

@@ -104,15 +104,15 @@ for (let project of projects) {
         const image = project.image || 'https://vis-society.github.io/labs/2/images/empty.svg';
         const description = project.description || 'No description available.';
         
-        const year = project.year ? `<time datetime="${project.year}">${project.year}</time>` : '';
-
+        // Check if a year exists
+        const year = project.year ? `<time datetime="${project.year}" class="project-year">${project.year}</time>` : '';
 
         article.innerHTML = `
             <${headingLevel}>${title}</${headingLevel}>
             <img src="${image}" alt="${title}">
-            <div class="project-info">
-                ${year}
+            <div class="project-details">
                 <p>${description}</p>
+                ${year}
             </div>
         `;
 

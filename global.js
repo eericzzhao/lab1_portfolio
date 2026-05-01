@@ -9,9 +9,9 @@ function $$(selector, context = document) {
 }
 
 let pages = [
-  { url: '', title: 'Home' },
-  { url: 'projects/', title: 'Projects' },
-  { url: 'contact/', title: 'Contact' },
+  { url: 'index.html', title: 'Home' }, 
+  { url: 'projects/index.html', title: 'Projects' },
+  { url: 'contact/index.html', title: 'Contact' },
   { url: 'https://github.com/eericzzhao', title: 'Github' }
 ];
 
@@ -65,10 +65,8 @@ if ("colorScheme" in localStorage) {
 
 export async function fetchJSON(url) {
   try {
-    // Fetch the JSON file from the given URL
     const response = await fetch(url);
     
-    // Check if the request was successful
     if (!response.ok) {
       throw new Error(`Failed to fetch projects: ${response.statusText}`);
     }

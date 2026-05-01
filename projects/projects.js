@@ -16,7 +16,6 @@ if (projectsTitle && projects) {
 let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
 let colors = d3.scaleOrdinal(d3.schemeTableau10);
 
-// EXTRA CREDIT: UNIFIED STATE MANAGEMENT
 let query = '';
 let selectedYear = '';
 

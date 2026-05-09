@@ -293,7 +293,6 @@ button {
 
 .stats {
     display: grid;
-    /* This automatically wraps the grid into as many columns as will fit */
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
     gap: 1.5em;
     padding: 1.5em;
@@ -324,6 +323,66 @@ button {
         background-color: oklch(25% 2% 200);
     }
     .stats dt {
+        color: #aaa;
+    }
+}
+
+circle {
+    transition: 200ms;
+    transform-origin: center;
+    transform-box: fill-box;
+}
+
+circle:hover {
+    transform: scale(1.5);
+}
+
+dl.info {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 0.2em 1em;
+    margin: 0;
+    
+    transition-duration: 500ms;
+    transition-property: opacity, visibility;
+}
+
+dl.info dt {
+    color: #666;
+    font-weight: normal;
+    text-transform: uppercase;
+    font-size: 0.8em;
+}
+
+dl.info dd {
+    margin: 0;
+    font-weight: bold;
+}
+
+dl.info[hidden]:not(:hover, :focus-within) {
+    opacity: 0;
+    visibility: hidden;
+    display: block; 
+}
+
+.tooltip {
+    position: fixed;
+    top: 1em;
+    left: 1em;
+    padding: 1em;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    background-color: oklch(100% 0 0 / 80%);
+    backdrop-filter: blur(8px); 
+    z-index: 1000;
+}
+
+@media (prefers-color-scheme: dark) {
+    .tooltip {
+        background-color: oklch(20% 0 0 / 80%);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    }
+    dl.info dt {
         color: #aaa;
     }
 }

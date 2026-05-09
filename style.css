@@ -290,3 +290,40 @@ button {
 .selected:is(path) {
     fill: var(--color);
 }
+
+.stats {
+    display: grid;
+    /* This automatically wraps the grid into as many columns as will fit */
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+    gap: 1.5em;
+    padding: 1.5em;
+    border-radius: 8px;
+    text-align: center;
+    background-color: oklch(95% 2% 200 / 50%);
+    border: 1px solid oklch(50% 10% 200 / 20%);
+    margin-bottom: 2em;
+}
+
+.stats dt {
+    font-weight: bold;
+    color: #555;
+    text-transform: uppercase;
+    font-size: 0.85em;
+    margin-bottom: 0.5em;
+}
+
+.stats dd {
+    margin: 0; 
+    font-size: 2.5em;
+    font-weight: bold;
+    color: var(--color-accent);
+}
+
+@media (prefers-color-scheme: dark) {
+    .stats {
+        background-color: oklch(25% 2% 200);
+    }
+    .stats dt {
+        color: #aaa;
+    }
+}

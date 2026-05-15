@@ -70,5 +70,13 @@
     "year": 2021,
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
     "description": "Coded Simpson's Rule and the Trapezoidal Rule to approximate definite integrals."
+  },
+
+  {
+    "title": "BikePathing: Boston Traffic Visualization",
+    "image": "images/bikepathing.png",
+    "description": "An interactive map visualizing bike traffic flow in Boston using Mapbox GL JS and D3.js. Features time-based filtering and dynamic data scaling.",
+    "url": "https://eericzzhao.github.io/bikepathing", 
+    "year": "2024"
   }
 ]

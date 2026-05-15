@@ -74,9 +74,8 @@
 
   {
     "title": "BikePathing: Boston Traffic Visualization",
+    "year": "2026",
     "image": "images/bikepathing.png",
-    "description": "An interactive map visualizing bike traffic flow in Boston using Mapbox GL JS and D3.js. Features time-based filtering and dynamic data scaling.",
-    "url": "https://eericzzhao.github.io/bikepathing", 
-    "year": "2026"
+    "description": "An interactive map visualizing bike traffic flow in Boston using Mapbox GL JS and D3.js. Features time-based filtering and dynamic data scaling."
   }
 ]

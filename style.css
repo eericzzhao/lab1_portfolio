@@ -531,3 +531,27 @@ circle:hover {
     max-height: 90vh;
     overflow-y: hidden;
 }
+
+#scrolly-2 {
+    position: relative;
+    display: flex;
+    gap: 2rem;
+    margin-top: 2em;
+}
+
+#scrolly-2 > * {
+    flex: 1; /* Makes both columns take up exactly 50% width */
+}
+
+#file-story {
+    position: relative;
+}
+
+#file-visualization {
+    position: sticky;
+    top: 2rem; 
+    bottom: auto;
+    height: auto;
+    max-height: 90vh; /* Keeps it from extending beyond the viewport */
+    overflow-y: hidden;
+}

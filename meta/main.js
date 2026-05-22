@@ -4,9 +4,6 @@ import scrollama from 'https://cdn.jsdelivr.net/npm/scrollama@3.2.0/+esm';
 let data = []; 
 let commits = []; 
 let xScale, yScale;
-let commitProgress = 100;
-let timeScale;
-let commitMaxTime;
 
 async function loadData() {
     const rawData = await d3.csv('loc.csv', (row) => ({
@@ -81,7 +78,6 @@ function updateTooltipPosition(event) {
     }
 }
 
-// --- Stats Rendering ---
 function renderCommitInfo(data, commits) {
     d3.select('#stats').html('');
     
@@ -240,7 +236,6 @@ function updateScatterPlot(commits) {
     svg.selectAll('.dots, .overlay ~ *').raise();
 }
 
-// --- Brushing Functions ---
 function brushed(event) {
     const selection = event.selection;
     d3.selectAll('circle').classed('selected', (d) => isCommitSelected(selection, d));
@@ -295,7 +290,6 @@ function renderLanguageBreakdown(selection) {
     }
 }
 
-// --- File Unit Visualization ---
 function updateFileDisplay(filteredCommits) {
     let lines = filteredCommits.flatMap((d) => d.lines);
     
@@ -328,30 +322,9 @@ function updateFileDisplay(filteredCommits) {
         .style('background', d => fileTypeColors(d.type));
 }
 
-// --- Slider Event ---
-function onTimeSliderChange(event) {
-    commitProgress = event ? event.target.value : commitProgress;
-    commitMaxTime = timeScale.invert(commitProgress);
-    
-    const timeElement = document.getElementById('commit-time');
-    if (timeElement) {
-        timeElement.textContent = commitMaxTime.toLocaleString('en', {
-            dateStyle: "long",
-            timeStyle: "short"
-        });
-    }
 
-    let filteredCommits = commits.filter((d) => d.datetime <= commitMaxTime);
-    let filteredData = data.filter((d) => d.datetime <= commitMaxTime);
-
-    updateScatterPlot(filteredCommits);
-    renderCommitInfo(filteredData, filteredCommits);
-    updateFileDisplay(filteredCommits);
-}
-
-// --- STEP 3: Scrollytelling Setup ---
-function renderStory() {
-    d3.select('#scatter-story')
+function renderStory(containerId) {
+    d3.select(containerId)
         .selectAll('.step')
         .data(commits)
         .join('div')
@@ -359,7 +332,6 @@ function renderStory() {
         .html((d, i) => {
             const lines = d.lines || [];
             const numFiles = d3.rollups(lines, (D) => D.length, (d) => d.file).length;
-
             return `
                 <p>On ${d.datetime.toLocaleString('en', { dateStyle: 'full', timeStyle: 'short' })}, 
                 I made <a href="${d.url}" target="_blank">${i > 0 ? 'another glorious commit' : 'my first commit, and it was glorious'}</a>. 
@@ -375,16 +347,10 @@ function onStepEnter(response) {
     let filteredCommits = commits.filter((d) => d.datetime <= scrollMaxTime);
     let filteredData = data.filter((d) => d.datetime <= scrollMaxTime);
 
+    // This updates EVERYTHING on the page based on the scroll position
     updateScatterPlot(filteredCommits);
     renderCommitInfo(filteredData, filteredCommits);
     updateFileDisplay(filteredCommits);
-    
-    const slider = document.getElementById('commit-progress');
-    if (slider) {
-        slider.value = timeScale(scrollMaxTime);
-        // Dispatch an event manually to ensure UI updates without infinite loop
-        slider.dispatchEvent(new Event('input'));
-    }
 }
 
 async function main() {
@@ -393,26 +359,24 @@ async function main() {
         commits = processCommits(data); 
         window.commits = commits; 
 
-        timeScale = d3.scaleTime()
-            .domain([d3.min(commits, d => d.datetime), d3.max(commits, d => d.datetime)])
-            .range([0, 100]);
-
         renderCommitInfo(data, commits);
         renderScatterPlot(data, commits);
         updateFileDisplay(commits);
 
-        // 2. THEN set up the slider
-        const timeSlider = document.getElementById('commit-progress');
-        if (timeSlider) {
-            timeSlider.addEventListener('input', onTimeSliderChange);
-        }
+        renderStory('#scatter-story');
+        renderStory('#file-story');
 
-        // 3. Initialize Scrollama Scrollytelling
-        renderStory();
-        const scroller = scrollama();
-        scroller.setup({
+        const scroller1 = scrollama();
+        scroller1.setup({
             container: '#scrolly-1',
             step: '#scrolly-1 .step',
+            offset: 0.5, 
+        }).onStepEnter(onStepEnter);
+
+        const scroller2 = scrollama();
+        scroller2.setup({
+            container: '#scrolly-2',
+            step: '#scrolly-2 .step',
             offset: 0.5, 
         }).onStepEnter(onStepEnter);
         
@@ -421,4 +385,4 @@ async function main() {
     }
 }
 
-main(); // Start everything!
+main(); 

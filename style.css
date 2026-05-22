@@ -511,3 +511,23 @@ circle:hover {
     bottom: auto;
     height: 60vh;
 }
+
+#language-breakdown.stats {
+    padding: 1em;
+    gap: 1em;
+    margin-bottom: 0;
+}
+
+#language-breakdown.stats dt {
+    font-size: 0.7em;
+}
+
+#language-breakdown.stats dd {
+    font-size: 1.5em; /* Scales down the giant numbers */
+}
+
+#scatter-plot {
+    height: auto;
+    max-height: 90vh;
+    overflow-y: hidden;
+}
